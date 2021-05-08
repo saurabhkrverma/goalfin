@@ -2,20 +2,22 @@ const HtmlWebPackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const path = require('path');
 const htmlPlugin = new HtmlWebPackPlugin({
-    template: "./public/index.html",
-    filename: "./index.html"
+    template: "./public/main.html",
+    filename: "./main.html"
 });
 
-const cssPlugin = new MiniCssExtractPlugin();
+const cssPlugin = new MiniCssExtractPlugin({
+    filename: "./main.css"
+});
 
 module.exports = {
     mode: "development",
     entry: {
-        app : ["./public/index.js"]
+        app : ["./public/main.js"]
     },
     output: {
         path: path.resolve(__dirname, '.build'),
-        filename: 'bundle.js'
+        filename: 'main.js'
     },
     plugins: [htmlPlugin, cssPlugin],
     module: {
@@ -23,17 +25,22 @@ module.exports = {
             {
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
-                use: {
+                use: [{
                     loader: "babel-loader"
-                }
+                }]
             },
             {
-                test: /\.css$/,
+                test: /\.s?css$/,
                 exclude: /node_modules/,
-                use: [
-                    MiniCssExtractPlugin.loader,
-                    'css-loader'
-                ]
+                use: [{
+                    loader: MiniCssExtractPlugin.loader,
+                },
+                {
+                    loader: "css-loader",
+                },
+                {
+                    loader: "sass-loader"
+                }]
             }
         ]
     }

@@ -1,5 +1,7 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
+import { Link } from "react-router-dom";
 
 class Header extends React.Component {
     constructor(props) {
@@ -8,7 +10,25 @@ class Header extends React.Component {
 
     render() {
         return (
-            <div>GoalFin Logoo</div>
+                <Navbar bg='dark'  variant={"dark"}>
+                    <Navbar.Brand href="/">Goalfin</Navbar.Brand>
+                    <Nav variant="pills" defaultActiveKey="/home">
+                        <Nav.Item>
+                            <Nav.Link as={Link} to="/sipcalc">SIP Calculator</Nav.Link>
+                        </Nav.Item>
+                        <Nav.Item>
+                            <Nav.Link as={Link} to="/rdcalc">RD Calculator</Nav.Link>
+                        </Nav.Item>
+                        <Nav.Item>
+                            <Nav.Link as={Link} to="/fdcalc">FD Calculator</Nav.Link>
+                        </Nav.Item>
+                        <Nav.Item>
+                            <Nav.Link eventKey="disabled" disabled>
+                                coming soon
+                            </Nav.Link>
+                        </Nav.Item>
+                    </Nav>
+                </Navbar>
         )
     }
 }
