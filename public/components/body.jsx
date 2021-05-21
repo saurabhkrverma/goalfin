@@ -23,7 +23,7 @@ class Body extends React.Component {
                     <FDCalculator/>
                 </Route>
                 <Route path="/">
-                    <div>{this.props.app.welcome_msg} pakka?</div>
+                    <SIPCalculator/>
                 </Route>
             </Switch>
         )

@@ -1,4 +1,5 @@
 import React from 'react';
+import Badge from 'react-bootstrap/Badge';
 
 class FDCalculator extends React.Component {
     constructor(props) {
@@ -7,7 +8,11 @@ class FDCalculator extends React.Component {
 
     render() {
         return (
-            <div>FD Calculator</div>
+            <div>
+                <h1>
+                    <Badge variant="secondary">Coming Soon</Badge>
+                </h1>
+            </div>
         )
     }
 }

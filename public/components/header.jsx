@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
+import Row from 'react-bootstrap/Row';
 import { Link } from "react-router-dom";
 
 class Header extends React.Component {
@@ -10,8 +11,10 @@ class Header extends React.Component {
 
     render() {
         return (
-                <Navbar bg='dark'  variant={"dark"}>
-                    <Navbar.Brand href="/">Goalfin</Navbar.Brand>
+            <Navbar expand="lg" variant={"light"}  collapseOnSelect expand={"lg"} className={"header row"}>
+                <Navbar.Brand href="/">Goalfin</Navbar.Brand>
+                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav variant="pills" defaultActiveKey="/home">
                         <Nav.Item>
                             <Nav.Link as={Link} to="/sipcalc">SIP Calculator</Nav.Link>
@@ -22,13 +25,9 @@ class Header extends React.Component {
                         <Nav.Item>
                             <Nav.Link as={Link} to="/fdcalc">FD Calculator</Nav.Link>
                         </Nav.Item>
-                        <Nav.Item>
-                            <Nav.Link eventKey="disabled" disabled>
-                                coming soon
-                            </Nav.Link>
-                        </Nav.Item>
                     </Nav>
-                </Navbar>
+                </Navbar.Collapse>
+            </Navbar>
         )
     }
 }
